@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     root 'customers#index', as: :authenticated_root
   end
 
-
+  resources :customers do
+    resources :purchases
+    resources :sales
+  end
 
   root "pages#home"
 end
