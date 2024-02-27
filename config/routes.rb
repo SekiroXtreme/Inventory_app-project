@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :sales
   end
 
+  resources :warehouses
+
   root "pages#home"
 end
