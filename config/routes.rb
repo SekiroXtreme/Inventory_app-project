@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :sales
   end
 
+  resources :users do
+    resources :warehouses 
+  end
+
   resources :warehouses
+
+
 
   root "pages#home"
 end
