@@ -5,5 +5,5 @@
   <p><%= warehouse.name %> <%= link_to "Editar", edit_user_warehouse_path(id: warehouse) %> <%= link_to "Eliminar", user_warehouse_path(id: warehouse), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %> </p>
+                  } %> <%= link_to "Productos", warehouse_products_path(warehouse) %> </p>
 <% end %>
