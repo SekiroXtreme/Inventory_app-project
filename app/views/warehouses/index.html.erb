@@ -1,4 +1,5 @@
 <h1>Depositos</h1>
+<p> <%= link_to "Crear Depósito", new_user_warehouse_path(current_user) %> </p>
 
 <% @warehouses.each do |warehouse| %>
   <p><%= warehouse.name %> <%= link_to "Editar", edit_user_warehouse_path(id: warehouse) %> <%= link_to "Eliminar", user_warehouse_path(id: warehouse), data: {
