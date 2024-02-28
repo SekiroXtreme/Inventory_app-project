@@ -4,10 +4,6 @@ class WarehousesController < ApplicationController
   def index
     @warehouses = Warehouse.all
   end
-
-  def show 
-    @warehouses = Warehouse.all
-  end
   
   def new
     @warehouse = Warehouse.new
