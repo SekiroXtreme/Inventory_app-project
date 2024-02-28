@@ -1,8 +1,11 @@
 class WarehousesController < ApplicationController
-  before_action :set_warehouse, only: %i[edit create show destroy update]  
+  before_action :set_warehouse, only: %i[edit show destroy update]  
+
+  def index
+    @warehouses = Warehouse.all
+  end
 
   def show 
-    @warehouses = Warehouse.all
   end
   
   def new
@@ -12,7 +15,7 @@ class WarehousesController < ApplicationController
   def create
     @warehouse = current_user.warehouses.build(warehouse_params)
     if @warehouse.save
-      redirect_to user_warehouse_path(@warehouse, current_user) notice: "Depósito añadido con éxito"
+      redirect_to user_warehouses_path(current_user), notice: "Depósito añadido con éxito" 
     else
       render :new , status: :unprocessable_entity
     end
@@ -22,17 +25,17 @@ class WarehousesController < ApplicationController
   end
 
   def update
-    @warehouse.update
-    if @warehouse.update
-      redirect_to user_warehouse_path(@warehouse, current_user)
+    if @warehouse.update(warehouse_params)
+      redirect_to user_warehouses_path(current_user)
     else
       render :edit , status: :unprocessable_entity
+    end
   end
 
   def destroy
     @warehouse.destroy
     if @warehouse.destroy
-      redirect_to user_warehouse_path
+      redirect_to user_warehouses_path(current_user)
     end
   end
 
@@ -44,5 +47,5 @@ class WarehousesController < ApplicationController
     def warehouse_params
       params.require(:warehouse).permit(:name)
     end
-  end
+
 end
