@@ -6,6 +6,7 @@ class WarehousesController < ApplicationController
   end
 
   def show 
+    @warehouses = Warehouse.all
   end
   
   def new
@@ -36,6 +37,8 @@ class WarehousesController < ApplicationController
     @warehouse.destroy
     if @warehouse.destroy
       redirect_to user_warehouses_path(current_user)
+    else
+      redirect_to user_warehouses_path(current_user) , notice: "No se pudo wey"
     end
   end
 
