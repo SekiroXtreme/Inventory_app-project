@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resources :warehouses 
   end
 
-  resources :warehouses
+  resources :warehouses do
+    resources :products
+  end
 
 
   root "pages#home"
