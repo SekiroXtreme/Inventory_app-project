@@ -1,2 +1,20 @@
 <h1>Productos</h1>
 <p><%= link_to 'Añadir Producto', new_warehouse_product_path(id: @warehouse) %></p>
+<div class="table-responsive">
+  <table class="table table-dark">  
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Disponible</th>
+      <th>Descripción</th>
+    </tr>
+    <% @products.each do |product| %>
+    <tr>      
+        <td><%= product.name %></td>
+        <td><%= product.price%>$</td>
+        <td><%= product.stock %></td>
+        <td><%= product.description %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

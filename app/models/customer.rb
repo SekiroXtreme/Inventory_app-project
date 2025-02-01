@@ -1,4 +1,4 @@
 class Customer < ApplicationRecord
   has_many :purchases
-  has many :sales
+  has_many :sales
 end

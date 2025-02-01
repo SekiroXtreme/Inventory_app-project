@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_warehouse, only: %i[update show destroy create]
 
   def index
+    @products = Product.all
   end
 
   def new
