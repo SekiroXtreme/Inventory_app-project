@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[update show destroy ]
-  before_action :set_warehouse, only: %i[update show destroy create]
+  before_action :set_warehouse, only: %i[update index destroy create]
 
   def index
-    @products = Product.all
+    @products = Product.where(warehouse_id: @warehouse)
+  end
+
+  def show
   end
 
   def new
@@ -13,7 +16,7 @@ class ProductsController < ApplicationController
   def create
     @product = @warehouse.products.build(product_params)
     if @product.save
-      redirect_to warehouse_products_path(current_user), notice: 'Producto añadido con éxito'
+      redirect_to warehouse_products_path(@warehouse), notice: 'Producto añadido con éxito'
     else
       render :new, status: :unprocessable_entity
     end
