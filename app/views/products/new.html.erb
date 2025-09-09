@@ -1,0 +1,7 @@
+<%= simple_form_for [:warehouse, @product] do |f| %>
+  <%= f.input :name, label: 'Nombre del producto' %>
+  <%= f.input :price, label: 'Precio' %>
+  <%= f.input :stock, label: 'Cantidad' %>
+  <%= f.input :description, label: 'Descripción' %>
+  <%= f.button :submit, label: 'Añadir producto' %>
+<%end%>

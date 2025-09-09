@@ -198,7 +198,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.3.3)
     regexp_parser (2.8.1)
     reline (0.3.8)
