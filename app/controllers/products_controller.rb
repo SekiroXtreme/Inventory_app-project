@@ -1,20 +1,20 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[update show destroy ]
-  before_action :set_warehouse, only: %i[update index destroy create]
+  before_action :set_warehouse
+  before_action :set_product, only: %i[show edit update destroy]
+
 
   def index
-    @products = Product.where(warehouse_id: @warehouse)
+    @products = @warehouse.products
   end
 
-  def show
-  end
+  def show; end
 
   def new
-    @product = Product.new
+    @product = @warehouse.products.new
   end
 
   def create
-    @product = @warehouse.products.build(product_params)
+    @product = @warehouse.products.new(product_params)
     if @product.save
       redirect_to warehouse_products_path(@warehouse), notice: 'Producto añadido con éxito'
     else
@@ -22,36 +22,35 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @product.update(product_params)
-      redirect_to warehouse_products_path(current_user)
+      redirect_to warehouse_products_path(@warehouse), notice: 'Producto actualizado con éxito'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @product.destroy
-      redirect_to warehouse_products_path(current_user)
-    end
+    @product.destroy
+    redirect_to warehouse_products_path(@warehouse), notice: 'Producto eliminado con éxito'
   end
 
   private
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
 
   def set_warehouse
     @warehouse = Warehouse.find(params[:warehouse_id])
   end
 
+  def set_product
+    @product = @warehouse.products.find(params[:id])
+  end
+
   def product_params
     params.require(:product).permit(:name, :price, :stock, :description)
   end
+
 end
 
 
