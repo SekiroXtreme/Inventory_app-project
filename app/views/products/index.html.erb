@@ -1,5 +1,5 @@
 <h1>Productos</h1>
-<p><%= link_to 'Añadir Producto', new_warehouse_product_path(id: @warehouse) %></p>
+<p><%= link_to 'Añadir Producto', new_user_warehouse_product_path(@warehouse) %></p>
 <div class="table-responsive">
   <table class="table table-dark">  
     <tr>
@@ -15,7 +15,7 @@
         <td><%= product.price%>$</td>
         <td><%= product.stock %></td>
         <td><%= product.description %></td>
-        <td><%= link_to "Editar", edit_warehouse_product_path(product.warehouse, product) %> <%= link_to "Eliminar", warehouse_product_path(product.warehouse, product), data: {
+        <td><%= link_to "Editar", edit_user_warehouse_product_path(current_user, product.warehouse, product) %> <%= link_to "Eliminar", user_warehouse_product_path(current_user, product.warehouse, product), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></td>

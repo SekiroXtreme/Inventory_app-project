@@ -1,4 +1,4 @@
-<%= simple_form_for [@warehouse, @product] do |f| %>
+<%= simple_form_for [current_user, @warehouse, @product] do |f| %>
   <%= f.input :name, label: 'Nombre del producto' %>
   <%= f.input :price, label: 'Precio' %>
   <%= f.input :stock, label: 'Cantidad' %>
