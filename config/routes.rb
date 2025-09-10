@@ -10,14 +10,10 @@ Rails.application.routes.draw do
     resources :sales
   end
 
-  resources :users do
-    resources :warehouses do
-      resources :products
-    end 
-  end
+  resources :warehouses do
+    resources :products
+  end 
 
   
-
-
   root "pages#home"
 end
