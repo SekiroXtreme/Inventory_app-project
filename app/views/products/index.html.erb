@@ -15,7 +15,7 @@
         <td><%= product.price%>$</td>
         <td><%= product.stock %></td>
         <td><%= product.description %></td>
-        <td><%= link_to "Editar", edit_warehouse_product_path(current_user, product.warehouse, product) %> <%= link_to "Eliminar", warehouse_product_path(current_user, product.warehouse, product), data: {
+        <td><%= link_to "Editar", edit_warehouse_product_path(@warehouse, product) %> <%= link_to "Eliminar", warehouse_product_path(@warehouse, product), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %></td>

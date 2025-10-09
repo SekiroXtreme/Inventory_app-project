@@ -12,7 +12,7 @@ class WarehousesController < ApplicationController
   def create
     @warehouse = current_user.warehouses.build(warehouse_params)
     if @warehouse.save
-      redirect_to warehouses_path(current_user), notice: "Depósito añadido con éxito" 
+      redirect_to warehouses_path, notice: "Depósito añadido con éxito" 
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class WarehousesController < ApplicationController
 
   def update
     if @warehouse.update(warehouse_params)
-      redirect_to warehouses_path(current_user), notice: "Depósito actualizado con éxito"
+      redirect_to warehouses_path, notice: "Depósito actualizado con éxito"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class WarehousesController < ApplicationController
 
   def destroy
     @warehouse.destroy
-    redirect_to warehouses_path(current_user), notice: "Depósito eliminado con éxito"
+    redirect_to warehouses_path, notice: "Depósito eliminado con éxito"
   end
 
   private
